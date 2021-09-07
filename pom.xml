@@ -15,6 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		<baseFolder>${basedir}</baseFolder>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -39,6 +40,7 @@
 	</dependencies>
 
 	<build>
+	   <directory>${baseFolder}/target</directory>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
