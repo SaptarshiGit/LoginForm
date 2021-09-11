@@ -1,5 +1,4 @@
 FROM openjdk:11
 EXPOSE 8090
-WORKDIR /
-ADD /target/docker-jenkins.jar docker-jenkins.jar
+ADD target/springsecurity-example-0.0.1-SNAPSHOT.jar docker-jenkins.jar
 ENTRYPOINT ["java", ".jar", "/docker-jenkins.jar"]
