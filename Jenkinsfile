@@ -11,19 +11,19 @@ pipeline{
         }
         stage("Docker Image Build"){
             steps{
-                sh "docker build -t saptarshigit/docker-jenkins --pull=true /var/lib/jenkins/workspace/GitHubExample"
+                sh "docker build -t localhost:5000/docker-jenkins --pull=true /var/lib/jenkins/workspace/GitHubExample"
             }
         }
         stage ("Docker Image Push"){
             steps{
-                sh "docker push saptarshigit/docker-jenkins"
+                sh "docker push localhost:5000/docker-jenkins"
             }
         }
         stage ("Docker Image Deploy"){
             steps{
-                sh "ssh root@172.31.1.214 /App/docker_scripts/deploy.sh saptarshigit/docker-jenkins:latest"
+                sh "ssh root@172.31.1.214 /App/docker_scripts/deploy.sh 172.31.13.138:5000/docker-jenkins"
                 
-                sh "ssh root@172.31.10.10 /App/docker_scripts/deploy.sh saptarshigit/docker-jenkins:latest"
+                sh "ssh root@172.31.10.10 /App/docker_scripts/deploy.sh 172.31.13.138:5000/docker-jenkins"
             }
         }
         stage ("Stop Docker Container"){
