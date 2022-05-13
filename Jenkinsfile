@@ -11,7 +11,9 @@ pipeline{
         }
         stage("Docker Image Build"){
             steps{
-                sh "docker build -t localhost:5000/docker-jenkins --pull=true /var/lib/jenkins/workspace/GitHubExample"
+                echo "Current Jenkins Workspace ----------------------------> ${WORKSPACE}"
+                echo ""
+                sh "docker build -t localhost:5000/docker-jenkins --pull=true ${WORKSPACE}"
             }
         }
         stage ("Docker Image Push"){
